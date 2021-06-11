@@ -43,9 +43,9 @@ public abstract class InGameHudMixin extends DrawableHelper{
             } break;
             case VERTICAL:{
                 // Top half
-                drawTexture(matrices, x, y - 21, 0, 0, 182, 21);
+                drawTexture(matrices, x, y - 20, 0, 0, 182, 21);
                 // Bottom half
-                drawTexture(matrices, x, y, 0, 1, 182, 21);
+                drawTexture(matrices, x, y + 1, 0, 1, 182, 21);
             } break;
             default:{
                 drawTexture(matrices, x, y, u, v, width, height);
@@ -134,8 +134,8 @@ public abstract class InGameHudMixin extends DrawableHelper{
         index = 2
     )
     private int renderHotbar$hotbarSelectionY(int original){
-        if(LargeBarClient.getHotbarMode() != LargeBarClient.HotbarMode.HORIZONTAL){
-            return original - (getCameraPlayer().inventory.selectedSlot / 9) * 20 - 1;
+        if(LargeBarClient.getHotbarMode() == LargeBarClient.HotbarMode.VERTICAL){
+            return original - (getCameraPlayer().inventory.selectedSlot / 9) * 20;
         }else{
             return original;
         }
